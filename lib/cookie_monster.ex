@@ -1,18 +1,19 @@
 defmodule CookieMonster do
   @moduledoc """
-  Documentation for `CookieMonster`.
+  A simple HTTP Cookie encoder and decoder written in pure Elixir with zero
+  dependencies.
   """
+
+  alias CookieMonster.Decoder
+  alias CookieMonster.Encoder
 
   @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> CookieMonster.hello()
-      :world
-
+  Encodes a cookie into a header string
   """
-  def hello do
-    :world
-  end
+  defdelegate encode(cookie, opts), to: Encoder
+
+  @doc """
+  Decodes a Set-Cookie into an Elixir struct
+  """
+  defdelegate decode(cookie_string), to: Decoder
 end
