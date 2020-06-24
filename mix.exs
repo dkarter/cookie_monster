@@ -7,7 +7,15 @@ defmodule CookieMonster.MixProject do
       version: "0.1.0",
       elixir: "~> 1.10",
       start_permanent: Mix.env() == :prod,
-      deps: deps()
+      deps: deps(),
+
+      # Docs
+      name: "CookieMonster",
+      source_url: "https://github.com/dkarter/cookie_monster",
+      docs: [
+        main: "CookieMonster",
+        extras: ["README.md"]
+      ]
     ]
   end
 
@@ -22,7 +30,8 @@ defmodule CookieMonster.MixProject do
   defp deps do
     [
       {:dialyxir, "~> 1.0.0", runtime: false, only: [:test, :dev]},
-      {:credo, "~> 1.4.0", runtime: false, only: [:test, :dev]}
+      {:credo, "~> 1.4.0", runtime: false, only: [:test, :dev]},
+      {:ex_doc, "~> 0.22", runtime: false, only: :dev}
     ]
   end
 end
