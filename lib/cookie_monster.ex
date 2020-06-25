@@ -7,6 +7,7 @@ defmodule CookieMonster do
   https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies
   """
 
+  alias CookieMonster.Cookie
   alias CookieMonster.Decoder
   alias CookieMonster.Encoder
 
