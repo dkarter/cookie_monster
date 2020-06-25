@@ -8,6 +8,7 @@ defmodule CookieMonster.MixProject do
       elixir: "~> 1.10",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
+      dialyzer: dialyzer(),
 
       # Docs
       name: "CookieMonster",
@@ -27,6 +28,13 @@ defmodule CookieMonster.MixProject do
   def application do
     [
       extra_applications: [:logger]
+    ]
+  end
+
+  defp dialyzer do
+    [
+      plt_core_path: "priv/plts",
+      plt_file: {:no_warn, "priv/plts/dialyzer.plt"}
     ]
   end
 
