@@ -1,5 +1,5 @@
 defmodule CookieMonster.CookieDateTimeTest do
-  use ExUnit.Case
+  use ExUnit.Case, async: true
 
   alias CookieMonster.CookieDateTime
 
