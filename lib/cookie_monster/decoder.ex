@@ -6,7 +6,7 @@ defmodule CookieMonster.Decoder do
   alias CookieMonster.Cookie
   alias CookieMonster.CookieDateTime
 
-  @spec decode(String.t()) :: Cookie.t()
+  @spec decode(String.t()) :: {:ok, Cookie.t()}
   def decode(cookie) do
     [[key, value] | directives] =
       cookie
@@ -20,7 +20,7 @@ defmodule CookieMonster.Decoder do
       }
       |> Map.merge(decode_directives(directives))
 
-    struct!(Cookie, fields)
+    {:ok, struct!(Cookie, fields)}
   end
 
   defp decode_directives(directives) do
