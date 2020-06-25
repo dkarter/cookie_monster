@@ -1,7 +1,6 @@
 # CookieMonster
 
-A simple HTTP Cookie encoder and decoder written in pure Elixir with zero
-runtime dependencies.
+A simple HTTP Cookie encoder and decoder in pure Elixir with zero runtime dependencies.
 
 ![cookie monster](img/cookie_monster.jpg)
 

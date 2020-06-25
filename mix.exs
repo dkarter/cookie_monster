@@ -15,7 +15,11 @@ defmodule CookieMonster.MixProject do
       docs: [
         main: "CookieMonster",
         extras: ["README.md"]
-      ]
+      ],
+
+      # Hex PM
+      description: description(),
+      package: package()
     ]
   end
 
@@ -26,7 +30,18 @@ defmodule CookieMonster.MixProject do
     ]
   end
 
-  # Run "mix help deps" to learn about dependencies.
+  defp description do
+    "A simple HTTP Cookie encoder and decoder in pure Elixir with zero runtime dependencies."
+  end
+
+  defp package do
+    [
+      files: ~w(lib .formatter.exs mix.exs README* LICENSE*),
+      licenses: ["MIT"],
+      links: %{"GitHub" => "https://github.com/dkarter/cookie_monster"}
+    ]
+  end
+
   defp deps do
     [
       {:dialyxir, "~> 1.0.0", runtime: false, only: [:test, :dev]},
