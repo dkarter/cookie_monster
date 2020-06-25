@@ -50,5 +50,9 @@ defmodule CookieMonster.DecoderTest do
                secure: true
              }
     end
+
+    test "returns an error if invalid cookie was provided" do
+      assert {:error, :invalid_cookie} = Decoder.decode("")
+    end
   end
 end

@@ -6,21 +6,25 @@ defmodule CookieMonster.Decoder do
   alias CookieMonster.Cookie
   alias CookieMonster.CookieDateTime
 
-  @spec decode(String.t()) :: {:ok, Cookie.t()}
+  @spec decode(String.t()) :: {:ok, Cookie.t()} | {:error, :invalid_cookie}
   def decode(cookie) do
-    [[key, value] | directives] =
-      cookie
-      |> String.split(~r/;\s*/, trim: true)
-      |> Enum.map(&String.split(&1, "=", parts: 2))
+    case split_directives(cookie) do
+      [[key, value] | directives] ->
+        fields =
+          %{name: key, value: value}
+          |> Map.merge(decode_directives(directives))
 
-    fields =
-      %{
-        name: key,
-        value: value
-      }
-      |> Map.merge(decode_directives(directives))
+        {:ok, struct!(Cookie, fields)}
 
-    {:ok, struct!(Cookie, fields)}
+      _ ->
+        {:error, :invalid_cookie}
+    end
+  end
+
+  defp split_directives(cookie) do
+    cookie
+    |> String.split(~r/;\s*/, trim: true)
+    |> Enum.map(&String.split(&1, "=", parts: 2))
   end
 
   defp decode_directives(directives) do
