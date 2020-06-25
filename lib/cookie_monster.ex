@@ -14,6 +14,7 @@ defmodule CookieMonster do
   Encodes a cookie into a header string
   """
   defdelegate encode(cookie, opts), to: Encoder
+  defdelegate encode(cookie), to: Encoder
 
   @doc """
   Decodes a Set-Cookie into an Elixir struct
