@@ -4,6 +4,7 @@ defmodule CookieMonster.Decoder do
   """
 
   alias CookieMonster.Cookie
+  alias CookieMonster.CookieDateTime
 
   @spec decode(String.t()) :: Cookie.t()
   def decode(cookie) do
@@ -32,7 +33,7 @@ defmodule CookieMonster.Decoder do
   defp normalize_directive([key, value]), do: {String.downcase(key), value}
   defp normalize_directive([key]), do: {String.downcase(key), true}
 
-  defp directive_to_kv_pair({"expires", date}), do: {:expires, date}
+  defp directive_to_kv_pair({"expires", date}), do: {:expires, CookieDateTime.parse(date)}
   defp directive_to_kv_pair({"max-age", date}), do: {:max_age, date}
   defp directive_to_kv_pair({"domain", domain}), do: {:domain, domain}
   defp directive_to_kv_pair({"path", path}), do: {:path, path}

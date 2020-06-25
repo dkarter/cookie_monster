@@ -2,6 +2,9 @@ defmodule CookieMonster do
   @moduledoc """
   A simple HTTP Cookie encoder and decoder written in pure Elixir with zero
   dependencies.
+
+  Follows the standards for cookie headers described in MDN:
+  https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies
   """
 
   alias CookieMonster.Decoder
