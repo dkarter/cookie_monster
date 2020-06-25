@@ -1,8 +1,8 @@
 defmodule CookieMonster.EncoderTest do
   use ExUnit.Case
 
-  alias CookieMonster.Encoder
   alias CookieMonster.Cookie
+  alias CookieMonster.Encoder
 
   doctest Encoder
 
