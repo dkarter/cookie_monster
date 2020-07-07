@@ -4,22 +4,27 @@ defmodule CookieMonster.Decoder do
   """
 
   alias CookieMonster.Cookie
+  alias CookieMonster.CookieDateTime
 
-  @spec decode(String.t()) :: Cookie.t()
+  @spec decode(String.t()) :: {:ok, Cookie.t()} | {:error, :invalid_cookie}
   def decode(cookie) do
-    [[key, value] | directives] =
-      cookie
-      |> String.split(~r/;\s*/, trim: true)
-      |> Enum.map(&String.split(&1, "=", parts: 2))
+    case split_directives(cookie) do
+      [[key, value] | directives] ->
+        fields =
+          %{name: key, value: value}
+          |> Map.merge(decode_directives(directives))
 
-    fields =
-      %{
-        name: key,
-        value: value
-      }
-      |> Map.merge(decode_directives(directives))
+        {:ok, struct!(Cookie, fields)}
 
-    struct!(Cookie, fields)
+      _ ->
+        {:error, :invalid_cookie}
+    end
+  end
+
+  defp split_directives(cookie) do
+    cookie
+    |> String.split(~r/;\s*/, trim: true)
+    |> Enum.map(&String.split(&1, "=", parts: 2))
   end
 
   defp decode_directives(directives) do
@@ -32,7 +37,7 @@ defmodule CookieMonster.Decoder do
   defp normalize_directive([key, value]), do: {String.downcase(key), value}
   defp normalize_directive([key]), do: {String.downcase(key), true}
 
-  defp directive_to_kv_pair({"expires", date}), do: {:expires, date}
+  defp directive_to_kv_pair({"expires", date}), do: {:expires, CookieDateTime.parse(date)}
   defp directive_to_kv_pair({"max-age", date}), do: {:max_age, date}
   defp directive_to_kv_pair({"domain", domain}), do: {:domain, domain}
   defp directive_to_kv_pair({"path", path}), do: {:path, path}
