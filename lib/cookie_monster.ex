@@ -12,7 +12,19 @@ defmodule CookieMonster do
   alias CookieMonster.Encoder
 
   @doc """
-  Encodes a cookie into a header string
+  Encodes a cookie struct into a header string
+
+  ## Example
+
+      iex> cookie = %CookieMonster.Cookie{
+      ...>   name: "id",
+      ...>   value: "a3fWa",
+      ...>   expires: ~U[2015-10-21 07:28:00Z],
+      ...>   http_only: true,
+      ...>   secure: true
+      ...> }
+      iex> CookieMonster.encode(cookie)
+      {:ok, "id=a3fWa; Expires=Wed, 21 Oct 2015 07:28:00 GMT; HttpOnly; Secure"}
   """
   defdelegate encode(cookie, opts), to: Encoder
   defdelegate encode(cookie), to: Encoder
@@ -26,7 +38,20 @@ defmodule CookieMonster do
   end
 
   @doc """
-  Decodes a Set-Cookie into an Elixir struct
+  Decodes a Set-Cookie header text into an Elixir struct
+
+  ## Example
+
+      iex> header = "id=a3fWa; Expires=Wed, 21 Oct 2015 07:28:00 GMT; Secure; HttpOnly"
+      ...> {:ok, cookie} = CookieMonster.decode(header)
+      ...> cookie
+      %CookieMonster.Cookie{
+        value: "a3fWa",
+        expires: ~U[2015-10-21 07:28:00Z],
+        http_only: true,
+        name: "id",
+        secure: true
+      }
   """
   defdelegate decode(cookie_string), to: Decoder
 
