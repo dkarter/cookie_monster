@@ -5,23 +5,24 @@ A simple HTTP Cookie encoder and decoder in pure Elixir with zero runtime depend
 ![cookie monster](img/cookie_monster.jpg)
 
 ## Motivation
-I recently worked on an app that needed to parse cookies, one solution could
-have been using [Plug](https://hex.pm/packages/plug)'s implementation to encode
-and decode the cookies, but that means bringing in a (relatively) large dependency just to use a small portion of it (my application was not web facing).
+I recently worked on an app that needed to parse cookies. Initially I reached
+out for [Plug](https://hex.pm/packages/plug)'s implementation to encode
+and decode the cookies, but that meant bringing in a (relatively) large dependency just to use a small portion of it (my application was not web facing).
 
-The other issue I had with Plug's implementation is that it used the name of the cookie as a key e.g. 
+Another issue I had with Plug's implementation is that it used the name of the cookie as a map key in the decoding result:
 
 ```elixir
 "id=a3fWa; Expires=Wed, 21 Oct 2015 07:28:00 GMT; HttpOnly; Secure"
-Plug.Conn.Cookies.decode("foo=bar; path=/")
+|> Plug.Conn.Cookies.decode()
 
 # => %{"Expires" => "Wed, 21 Oct 2015 07:28:00 GMT", "id" => "a3fWa"}
 ```
 
 I wanted something a little simpler, and dependency free that makes it easy to extract the name and
-value. Also I wanted to decode the date into an Elixir native DateTime.
+value. As a bonus, I wanted to decode the date into an Elixir native DateTime
+so that I can easily check if a cookie is expired.
 
-Example:
+## Example
 
 #### Encoding
 
@@ -37,7 +38,7 @@ alias CookieMonster.Cookie
 }
 |> CookieMonster.encode!()
 
-"id=a3fWa; Expires=Wed, 21 Oct 2015 07:28:00 GMT; HttpOnly; Secure"
+# => "id=a3fWa; Expires=Wed, 21 Oct 2015 07:28:00 GMT; HttpOnly; Secure"
 ```
 
 #### Decoding
@@ -48,13 +49,7 @@ alias CookieMonster.Cookie
 "id=a3fWa; Expires=Wed, 21 Oct 2015 07:28:00 GMT; HttpOnly; Secure"
 |> CookieMonster.decode!()
 
-%Cookie{
-  name: "id",
-  value: "a3fWa",
-  expires: ~U[2015-10-21 07:28:00Z],
-  http_only: true,
-  secure: true
-}
+# => %Cookie{name: "id", value: "a3fWa", expires: ~U[2015-10-21 07:28:00Z], http_only: true, secure: true}
 ```
 
 ## Installation
