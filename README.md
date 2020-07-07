@@ -6,8 +6,8 @@ A simple HTTP Cookie encoder and decoder in pure Elixir with zero runtime depend
 
 ## Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `cookie_monster` to your list of dependencies in `mix.exs`:
+The package can be installed by adding `cookie_monster` to your list of
+dependencies in `mix.exs`:
 
 ```elixir
 def deps do
@@ -17,6 +17,5 @@ def deps do
 end
 ```
 
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/cookie_monster](https://hexdocs.pm/cookie_monster).
+The docs can be found at [https://hexdocs.pm/cookie_monster](https://hexdocs.pm/cookie_monster).
 
