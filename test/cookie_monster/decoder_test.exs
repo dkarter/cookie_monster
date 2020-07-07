@@ -21,17 +21,17 @@ defmodule CookieMonster.DecoderTest do
 
     test "decodes cookie with extra params in different order" do
       cookie =
-        "wtbsess_data=ynVh2oxpzMIA2OKaMw7vBCBoAUS5ikzVRrohRr92sJrFWMs473%2BMgYDzHrXW6h0%2BqTYlcQeZttOJTExVx5c9%2FI8Vc%2BTKlQJmtKRISb8oa%2BvIutrMRW8vxOqFuz73nlOOxGh4bU68M%2F%2BlTjuapHujZVZb%2BCCcgItxfbCY6xcXN0eeBA%2FWgZAIH3Kwp%2F7oEtyoiweuUqmOJ05t0kqSkefrcSnb1%2BqwqZNacqng7d0kWvASiznzjZT7fClQ5A%3D%3D; SameSite=Strict; expires=Tue, 15 Jun 2021 05:32:54 GMT; path=/; secure"
+        "secret=VGhhbmsgeW91IGZvciByZWFkaW5nIG15IGNvZGUhIHdhbm5hIGNoYXQ%2FIG1lQGRvcmlhbmthcnRlci5jb20gPGo%3D; SameSite=Strict; expires=Tue, 15 Jun 2021 05:32:54 GMT; path=/; secure"
 
       assert {:ok, cookie} = Decoder.decode(cookie)
 
       assert cookie == %Cookie{
                value:
-                 "ynVh2oxpzMIA2OKaMw7vBCBoAUS5ikzVRrohRr92sJrFWMs473%2BMgYDzHrXW6h0%2BqTYlcQeZttOJTExVx5c9%2FI8Vc%2BTKlQJmtKRISb8oa%2BvIutrMRW8vxOqFuz73nlOOxGh4bU68M%2F%2BlTjuapHujZVZb%2BCCcgItxfbCY6xcXN0eeBA%2FWgZAIH3Kwp%2F7oEtyoiweuUqmOJ05t0kqSkefrcSnb1%2BqwqZNacqng7d0kWvASiznzjZT7fClQ5A%3D%3D",
+                 "VGhhbmsgeW91IGZvciByZWFkaW5nIG15IGNvZGUhIHdhbm5hIGNoYXQ%2FIG1lQGRvcmlhbmthcnRlci5jb20gPGo%3D",
                expires: ~U[2021-06-15 05:32:54Z],
                path: "/",
                http_only: nil,
-               name: "wtbsess_data",
+               name: "secret",
                secure: true,
                same_site: :strict
              }
