@@ -34,7 +34,7 @@ defmodule CookieMonster do
   def encode!(cookie, opts \\ []) do
     case encode(cookie, opts) do
       {:ok, encoded_cookie} -> encoded_cookie
-      {:error, error} -> raise error
+      {:error, error} -> raise ArgumentError, Atom.to_string(error)
     end
   end
 
@@ -67,7 +67,7 @@ defmodule CookieMonster do
   def decode!(cookie) do
     case decode(cookie) do
       {:ok, decoded_cookie} -> decoded_cookie
-      {:error, error} -> raise error
+      {:error, error} -> raise ArgumentError, Atom.to_string(error)
     end
   end
 end

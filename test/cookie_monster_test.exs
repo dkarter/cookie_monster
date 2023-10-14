@@ -22,4 +22,20 @@ defmodule CookieMonsterTest do
              |> CookieMonster.decode!() == cookie
     end
   end
+
+  describe "encode!/1" do
+    test "raises and error when cookie is invalid" do
+      assert_raise ArgumentError, "invalid_cookie", fn ->
+        CookieMonster.encode!(%{}) |> dbg
+      end
+    end
+  end
+
+  describe "decode!/1" do
+    test "raises and error when cookie is invalid" do
+      assert_raise ArgumentError, "invalid_cookie", fn ->
+        CookieMonster.decode!("")
+      end
+    end
+  end
 end

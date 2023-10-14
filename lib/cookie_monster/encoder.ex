@@ -7,7 +7,7 @@ defmodule CookieMonster.Encoder do
   @type return_t :: {:ok, String.t()} | {:error, :invalid_cookie}
 
   @doc """
-  Encodes a cookie / map into a string
+  Encodes a %CookieMonster.Cookie{} struct / map into a string
   """
   @spec encode(Cookie.t() | map(), keyword()) :: return_t()
   def encode(cookie, opts \\ [])
