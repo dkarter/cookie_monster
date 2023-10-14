@@ -52,9 +52,9 @@ defmodule CookieMonster.MixProject do
 
   defp deps do
     [
-      {:dialyxir, "~> 1.0.0", runtime: false, only: [:test, :dev]},
-      {:credo, "~> 1.4.0", runtime: false, only: [:test, :dev]},
-      {:ex_doc, "~> 0.22", runtime: false, only: :dev}
+      {:dialyxir, "~> 1.4", runtime: false, only: [:test, :dev]},
+      {:credo, "~> 1.7", runtime: false, only: [:test, :dev]},
+      {:ex_doc, "~> 0.30", runtime: false, only: :dev}
     ]
   end
 end
