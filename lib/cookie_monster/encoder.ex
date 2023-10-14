@@ -21,8 +21,9 @@ defmodule CookieMonster.Encoder do
     directives =
       cookie
       |> Map.take([:expires, :max_age, :same_site, :domain, :path, :secure, :http_only])
-      |> Enum.map(&encode_directive/1)
-      |> Enum.reject(&(&1 == nil))
+      |> Stream.map(&encode_directive/1)
+      |> Stream.reject(&(&1 == nil))
+      |> Enum.sort()
 
     cookie = ["#{name}=#{value}" | directives] |> Enum.join("; ")
 
