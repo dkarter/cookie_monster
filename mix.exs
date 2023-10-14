@@ -1,14 +1,24 @@
 defmodule CookieMonster.MixProject do
   use Mix.Project
 
+  @version "0.1.1"
+
   def project do
     [
       app: :cookie_monster,
-      version: "0.1.1",
+      version: @version,
       elixir: "~> 1.10",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
       dialyzer: dialyzer(),
+
+      # Boundary compile time checks
+      boundary: [
+        default: [
+          type: :strict
+        ]
+      ],
+      compilers: [:boundary] ++ Mix.compilers(),
 
       # Docs
       name: "CookieMonster",
@@ -52,8 +62,9 @@ defmodule CookieMonster.MixProject do
 
   defp deps do
     [
-      {:dialyxir, "~> 1.4", runtime: false, only: [:test, :dev]},
+      {:boundary, "~> 0.10", runtime: false},
       {:credo, "~> 1.7", runtime: false, only: [:test, :dev]},
+      {:dialyxir, "~> 1.4", runtime: false, only: [:test, :dev]},
       {:ex_doc, "~> 0.30", runtime: false, only: :dev}
     ]
   end

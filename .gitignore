@@ -22,6 +22,7 @@ erl_crash.dump
 # Ignore package tarball (built via "mix hex.build").
 cookie_monster-*.tar
 
+/boundary/
 
 # Ignore plts
 /priv/plts/
