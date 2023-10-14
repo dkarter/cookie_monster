@@ -26,6 +26,7 @@ defmodule CookieMonster do
       iex> CookieMonster.encode(cookie)
       {:ok, "id=a3fWa; Expires=Wed, 21 Oct 2015 07:28:00 GMT; HttpOnly; Secure"}
   """
+  @spec encode(Cookie.t() | map(), keyword()) :: Encoder.return_t()
   defdelegate encode(cookie, opts), to: Encoder
   defdelegate encode(cookie), to: Encoder
 
@@ -53,6 +54,7 @@ defmodule CookieMonster do
         secure: true
       }
   """
+  @spec decode(String.t()) :: Decoder.return_t()
   defdelegate decode(cookie_string), to: Decoder
 
   @doc """

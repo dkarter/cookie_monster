@@ -4,7 +4,9 @@ defmodule CookieMonster.Decoder do
   alias CookieMonster.Cookie
   alias CookieMonster.CookieDateTime
 
-  @spec decode(String.t()) :: {:ok, Cookie.t()} | {:error, :invalid_cookie}
+  @type return_t :: {:ok, Cookie.t()} | {:error, :invalid_cookie}
+
+  @spec decode(String.t()) :: return_t()
   def decode(cookie) do
     case split_directives(cookie) do
       [[key, value] | directives] ->

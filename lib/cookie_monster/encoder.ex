@@ -4,10 +4,12 @@ defmodule CookieMonster.Encoder do
   alias CookieMonster.Cookie
   alias CookieMonster.CookieDateTime
 
+  @type return_t :: {:ok, String.t()} | {:error, :invalid_cookie}
+
   @doc """
   Encodes a cookie / map into a string
   """
-  @spec encode(Cookie.t() | map(), keyword()) :: {:ok, String.t()} | {:error, :invalid_cookie}
+  @spec encode(Cookie.t() | map(), keyword()) :: return_t()
   def encode(cookie, opts \\ [])
 
   def encode(%{name: name, value: value}, target: :request) do
