@@ -32,7 +32,8 @@ defmodule CookieMonster.CookieDateTime do
   @spec format(DateTime.t()) :: String.t()
   def format(%DateTime{} = datetime) do
     %{year: year, month: month, day: day, hour: hour, minute: minute, second: second} = datetime
-    dow = Calendar.ISO.day_of_week(year, month, day) |> day_of_week()
+    {dow_index, 1, 7} = Calendar.ISO.day_of_week(year, month, day, :monday)
+    dow = day_of_week(dow_index)
     month = month(datetime)
     "#{dow}, #{pad(day)} #{month} #{year} #{pad(hour)}:#{pad(minute)}:#{pad(second)} GMT"
   end
