@@ -42,6 +42,9 @@ jobs:
           mix local.hex --force
           mix deps.get
 
+      - name: Compile Time Checks
+        run: mix compile --warnings-as-errors
+
       - name: Check Formatting
         run: mix format --check-formatted
 
