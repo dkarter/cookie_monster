@@ -1,7 +1,5 @@
 defmodule CookieMonster.Decoder do
-  @moduledoc """
-  Converts a cookie string from a response's Set-Cookie header to an Elixir struct
-  """
+  @moduledoc false
 
   alias CookieMonster.Cookie
   alias CookieMonster.CookieDateTime

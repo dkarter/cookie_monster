@@ -1,8 +1,5 @@
 defmodule CookieMonster.Encoder do
-  @moduledoc """
-  Converts a cookie string from an Elixir Cookie struct into a cookie string
-  which can be used in requests as the Cookie header
-  """
+  @moduledoc false
 
   alias CookieMonster.Cookie
   alias CookieMonster.CookieDateTime

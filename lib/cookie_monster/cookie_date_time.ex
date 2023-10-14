@@ -1,8 +1,5 @@
 defmodule CookieMonster.CookieDateTime do
-  @moduledoc """
-  Conveniences for encoding and decoding cookie date time format as described in MDN
-  https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Date
-  """
+  @moduledoc false
 
   @month_names [
     "Jan",
