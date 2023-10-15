@@ -51,6 +51,23 @@ defmodule CookieMonster.DecoderTest do
              }
     end
 
+    test "parses cookie string with RFC1123 date but with dashes" do
+      cookie =
+        "HI=hello; expires=Sat, 14-Oct-2023 16:25:57 GMT; path=/; domain=example.com; secure; HttpOnly"
+
+      assert {:ok, cookie} = Decoder.decode(cookie)
+
+      assert cookie == %Cookie{
+               domain: "example.com",
+               expires: ~U[2023-10-14 16:25:57Z],
+               http_only: true,
+               name: "HI",
+               path: "/",
+               secure: true,
+               value: "hello"
+             }
+    end
+
     test "returns an error if invalid cookie was provided" do
       assert {:error, :invalid_cookie} = Decoder.decode("")
     end
