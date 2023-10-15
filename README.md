@@ -4,7 +4,7 @@
 
 A simple HTTP Cookie encoder and decoder in pure Elixir with zero runtime dependencies[^1].
 
-![cookie monster logo](img/cookie_monster.webp)
+![cookie monster logo](img/cookie_monster.jpg)
 
 ## Motivation
 
