@@ -15,10 +15,10 @@ and decode the cookies, but that meant bringing in a (relatively) large dependen
 Another issue I had with Plug's implementation is that it used the name of the cookie as a map key in the decoding result:
 
 ```elixir
-"id=a3fWa; Expires=Wed, 21 Oct 2015 07:28:00 GMT; HttpOnly; Secure"
+"hello=a3fWa; Expires=Wed, 21 Oct 2015 07:28:00 GMT; HttpOnly; Secure"
 |> Plug.Conn.Cookies.decode()
 
-# => %{"Expires" => "Wed, 21 Oct 2015 07:28:00 GMT", "id" => "a3fWa"}
+# => %{"Expires" => "Wed, 21 Oct 2015 07:28:00 GMT", "hello" => "a3fWa"}
 ```
 
 I wanted something a little simpler, and dependency free that makes it easy to extract the name and
