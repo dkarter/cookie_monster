@@ -7,7 +7,7 @@ defmodule CookieMonster do
   https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies
   """
 
-  use Boundary, deps: [], exports: [Cookie]
+  use Boundary, deps: [Logger], exports: [Cookie]
 
   alias CookieMonster.Cookie
   alias CookieMonster.Decoder

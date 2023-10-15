@@ -15,7 +15,10 @@ defmodule CookieMonster.MixProject do
       # Boundary compile time checks
       boundary: [
         default: [
-          type: :strict
+          type: :strict,
+          check: [
+            apps: [:logger]
+          ]
         ]
       ],
       compilers: [:boundary] ++ Mix.compilers(),
