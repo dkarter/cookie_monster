@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.3](https://github.com/dkarter/cookie_monster/compare/v1.1.2...v1.1.3) (2023-10-15)
+
+
+### Miscellaneous Chores
+
+* release 1.1.3 ([90dece7](https://github.com/dkarter/cookie_monster/commit/90dece7d71bf009e81425c2d53e29110b5bc9b69))
+
 ## [1.1.2](https://github.com/dkarter/cookie_monster/compare/v1.1.1...v1.1.2) (2023-10-15)
 
 
