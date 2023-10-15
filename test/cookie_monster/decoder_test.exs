@@ -19,6 +19,19 @@ defmodule CookieMonster.DecoderTest do
              }
     end
 
+    test "parses cookie max-age" do
+      cookie = "id=a3fWa; max-age=1000; Secure"
+
+      assert {:ok, cookie} = Decoder.decode(cookie)
+
+      assert cookie == %Cookie{
+               max_age: 1000,
+               name: "id",
+               secure: true,
+               value: "a3fWa"
+             }
+    end
+
     test "decodes cookie with extra params in different order" do
       cookie =
         "secret=VGhhbmsgeW91IGZvciByZWFkaW5nIG15IGNvZGUhIHdhbm5hIGNoYXQ%2FIG1lQGRvcmlhbmthcnRlci5jb20gPGo%3D; SameSite=Strict; expires=Tue, 15 Jun 2021 05:32:54 GMT; path=/; secure"
@@ -70,6 +83,19 @@ defmodule CookieMonster.DecoderTest do
 
     test "returns an error if invalid cookie was provided" do
       assert {:error, :invalid_cookie} = Decoder.decode("")
+      assert {:error, :invalid_cookie} = Decoder.decode("xyz")
+    end
+
+    test "returns an error if invalid max_age was provided" do
+      cookie = "foo=bar; max-age=f"
+
+      assert {:error, :invalid_cookie_max_age} = Decoder.decode(cookie)
+    end
+
+    test "returns an error if invalid samesite was provided" do
+      cookie = "foo=bar; samesite=baz"
+
+      assert {:error, :invalid_cookie_samesite} = Decoder.decode(cookie)
     end
   end
 end

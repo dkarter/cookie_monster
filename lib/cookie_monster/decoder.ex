@@ -12,6 +12,7 @@ defmodule CookieMonster.Decoder do
           {:error, :invalid_cookie}
           | {:error, :invalid_cookie_datetime}
           | {:error, :invalid_cookie_samesite}
+          | {:error, :invalid_cookie_max_age}
 
   @type return_t :: ok_t() | err_t()
 
@@ -57,7 +58,7 @@ defmodule CookieMonster.Decoder do
   defp normalize_directive([key]), do: {String.downcase(key), true}
 
   defp directive_to_kv_pair({"expires", date}), do: {:expires, date}
-  defp directive_to_kv_pair({"max-age", date}), do: {:max_age, date}
+  defp directive_to_kv_pair({"max-age", seconds}), do: {:max_age, seconds}
   defp directive_to_kv_pair({"domain", domain}), do: {:domain, domain}
   defp directive_to_kv_pair({"path", path}), do: {:path, path}
   defp directive_to_kv_pair({"secure", true}), do: {:secure, true}
@@ -66,11 +67,13 @@ defmodule CookieMonster.Decoder do
 
   defp parse_cookie_values(map) do
     with {:ok, same_site} <- parse_same_site(map[:same_site]),
-         {:ok, expires} <- parse_expires(map[:expires]) do
+         {:ok, expires} <- parse_expires(map[:expires]),
+         {:ok, max_age} <- parse_max_age(map[:max_age]) do
       parsed_map =
         map
         |> Map.put(:same_site, same_site)
         |> Map.put(:expires, expires)
+        |> Map.put(:max_age, max_age)
 
       {:ok, parsed_map}
     end
@@ -91,4 +94,13 @@ defmodule CookieMonster.Decoder do
   defp same_site_to_atom("lax"), do: {:ok, :lax}
   defp same_site_to_atom("none"), do: {:ok, :none}
   defp same_site_to_atom(_otherwise), do: {:error, :invalid_cookie_samesite}
+
+  defp parse_max_age(nil), do: {:ok, nil}
+
+  defp parse_max_age(str) do
+    case Integer.parse(str) do
+      {int, _bin} when is_integer(int) -> {:ok, int}
+      :error -> {:error, :invalid_cookie_max_age}
+    end
+  end
 end
