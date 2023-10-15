@@ -1,0 +1,60 @@
+name: Release
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        elixir: ['1.15']
+        otp: ['26']
+
+    steps:
+      - name: Bump version and update changelog
+        id: release
+        uses: google-github-actions/release-please-action@v3
+        with:
+          token: '${{ secrets.GITHUB_TOKEN }}'
+          release-type: elixir
+          package-name: cookie_monster
+          extra-files: |
+            README.md
+
+      - name: Checkout Repository
+        if: ${{ steps.release.outputs.release_created }}
+        uses: actions/checkout@v3
+
+      - name: Setup Elixir
+        uses: erlef/setup-beam@v1
+        with:
+          elixir-version: ${{ matrix.elixir }}
+          otp-version: ${{ matrix.otp }}
+
+      - name: Retrieve Mix Dependencies Cache
+        uses: actions/cache@v1
+        id: mix-cache # id to use in retrieve action
+        with:
+          path: deps
+          key: ${{ runner.os }}-${{ matrix.otp }}-${{ matrix.elixir }}-mix-${{ hashFiles(format('{0}{1}', github.workspace, '/mix.lock')) }}
+
+      - name: Install Mix Dependencies
+        if: steps.mix-cache.outputs.cache-hit != 'true' && steps.release.outputs.release_created
+        run: |
+          mix local.rebar --force
+          mix local.hex --force
+          mix deps.get
+
+      - name: Publish Hex Package
+        if: ${{ steps.release.outputs.release_created }}
+        run: |
+          mix hex.publish package --yes
+        env:
+          HEX_API_KEY: '${{ secrets.HEX_API_KEY }}'

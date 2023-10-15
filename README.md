@@ -7,6 +7,7 @@ A simple HTTP Cookie encoder and decoder in pure Elixir with zero runtime depend
 ![cookie monster](img/cookie_monster.jpg)
 
 ## Motivation
+
 I recently worked on an app that needed to parse cookies. Initially I reached
 out for [Plug](https://hex.pm/packages/plug)'s implementation to encode
 and decode the cookies, but that meant bringing in a (relatively) large dependency just to use a small portion of it (my application was not web facing).
@@ -59,6 +60,8 @@ alias CookieMonster.Cookie
 The package can be installed by adding `cookie_monster` to your list of
 dependencies in `mix.exs`:
 
+<!-- x-release-please-start-version -->
+
 ```elixir
 def deps do
   [
@@ -67,5 +70,6 @@ def deps do
 end
 ```
 
-The docs can be found at [https://hexdocs.pm/cookie_monster](https://hexdocs.pm/cookie_monster).
+<!-- x-release-please-end-version -->
 
+The docs can be found at [https://hexdocs.pm/cookie_monster](https://hexdocs.pm/cookie_monster).
