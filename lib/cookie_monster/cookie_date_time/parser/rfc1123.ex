@@ -12,7 +12,7 @@ defmodule CookieMonster.CookieDateTime.Parser.RFC1123 do
   #                ; day month year (e.g., 02 Jun 1982)
   # time         = 2DIGIT ":" 2DIGIT ":" 2DIGIT
   #                ; 00:00:00 - 23:59:59
-  @regex ~r/\w{3}, (?<day>\d{2}) (?<month>\w{3}) (?<year>\d{4}) (?<hour>\d{2}):(?<minute>\d{2}):(?<second>\d{2}) GMT/
+  @regex ~r/\w{3}, (?<day>\d{2})[\s\-](?<month>\w{3})[\s\-](?<year>\d{4}) (?<hour>\d{2}):(?<minute>\d{2}):(?<second>\d{2}) GMT/
 
   @impl Parser
   def parse(str) do
