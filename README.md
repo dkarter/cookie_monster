@@ -2,7 +2,7 @@
 
 [![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Fdkarter%2Fcookie_monster%2Fbadge&style=for-the-badge)](https://actions-badge.atrox.dev/dkarter/cookie_monster/goto)
 
-A simple HTTP Cookie encoder and decoder in pure Elixir with zero runtime dependencies.
+A simple HTTP Cookie encoder and decoder in pure Elixir with zero runtime dependencies[^1].
 
 ![cookie monster](img/cookie_monster.jpg)
 
@@ -73,3 +73,5 @@ end
 <!-- x-release-please-end-version -->
 
 The docs can be found at [https://hexdocs.pm/cookie_monster](https://hexdocs.pm/cookie_monster).
+
+1: Boundary is listed as a dependency, but it is not a runtime dependency and only used during compile time to ensure proper design
