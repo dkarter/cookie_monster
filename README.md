@@ -74,4 +74,4 @@ end
 
 The docs can be found at [https://hexdocs.pm/cookie_monster](https://hexdocs.pm/cookie_monster).
 
-1: Boundary is listed as a dependency, but it is not a runtime dependency and only used during compile time to ensure proper design
+[^1]: Boundary is listed as a dependency, but it is not a runtime dependency and only used during compile time to ensure proper design
