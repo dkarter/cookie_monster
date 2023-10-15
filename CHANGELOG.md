@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1](https://github.com/dkarter/cookie_monster/compare/v1.1.0...v1.1.1) (2023-10-15)
+
+
+### Bug Fixes
+
+* support dashes in expiration format RFC1123 ([#10](https://github.com/dkarter/cookie_monster/issues/10)) ([81e081a](https://github.com/dkarter/cookie_monster/commit/81e081ab5b45a7da866b02436e90aea11668c83b))
+
 ## [1.1.0](https://github.com/dkarter/cookie_monster/compare/v1.0.0...v1.1.0) (2023-10-15)
 
 
