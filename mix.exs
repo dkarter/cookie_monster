@@ -28,6 +28,7 @@ defmodule CookieMonster.MixProject do
       source_url: "https://github.com/dkarter/cookie_monster",
       docs: [
         main: "CookieMonster",
+        logo: "img/cookie_monster.png",
         extras: ["README.md", "CHANGELOG.md"]
       ],
 
