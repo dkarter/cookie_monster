@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.1.4](https://github.com/dkarter/cookie_monster/compare/v1.1.3...v1.1.4) (2023-10-15)
+
+
+### Bug Fixes
+
+* cookie type max_age was incorrect ([c5de17f](https://github.com/dkarter/cookie_monster/commit/c5de17f2f787fffb9507a3b96f374c661b9f1c0a))
+* correctly document private modules ([f767ec8](https://github.com/dkarter/cookie_monster/commit/f767ec837eec23a062998aca56e1572188fd5959))
+* parse max_age to integer correctly ([0ada60c](https://github.com/dkarter/cookie_monster/commit/0ada60cc33c810d1427a87210d7ab003b30faa4e))
+
 ## [1.1.3](https://github.com/dkarter/cookie_monster/compare/v1.1.2...v1.1.3) (2023-10-15)
 
 

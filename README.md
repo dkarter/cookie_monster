@@ -65,7 +65,7 @@ dependencies in `mix.exs`:
 ```elixir
 def deps do
   [
-    {:cookie_monster, "~> 1.1.3"}
+    {:cookie_monster, "~> 1.1.4"}
   ]
 end
 ```
