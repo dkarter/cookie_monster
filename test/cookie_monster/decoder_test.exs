@@ -97,5 +97,11 @@ defmodule CookieMonster.DecoderTest do
 
       assert {:error, :invalid_cookie_samesite} = Decoder.decode(cookie)
     end
+
+    test "returns an error if invalid date was provided" do
+      cookie = "foo=bar; expires=Saturday 11, Sep 2000"
+
+      assert {:error, :invalid_cookie_datetime} = Decoder.decode(cookie)
+    end
   end
 end
