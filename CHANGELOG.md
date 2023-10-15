@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.2](https://github.com/dkarter/cookie_monster/compare/v1.1.1...v1.1.2) (2023-10-15)
+
+
+### Bug Fixes
+
+* automatically publish docs with hex package ([af3c87d](https://github.com/dkarter/cookie_monster/commit/af3c87ddf943eb2efbc31eb7dba1bece1479cc4b))
+
 ## [1.1.1](https://github.com/dkarter/cookie_monster/compare/v1.1.0...v1.1.1) (2023-10-15)
 
 
