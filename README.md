@@ -2,9 +2,9 @@
 
 ![Build Status](https://github.com/dkarter/cookie_monster/actions/workflows/elixir.yml/badge.svg)
 
-A simple HTTP Cookie encoder and decoder in pure Elixir with zero runtime dependencies[^1].
+A simple HTTP Cookie encoder and decoder in pure Elixir with zero runtime dependencies![^1].
 
-![cookie monster logo](img/cookie_monster.png)
+![cookie monster logo](https://github.com/dkarter/cookie_monster/raw/main/img/cookie_monster.png)
 
 ## Motivation
 
