@@ -1,14 +1,15 @@
 defmodule CookieMonster.Encoder do
-  @moduledoc false
+  @moduledoc """
+  Private module for decoding a cookie string. Please use
+  `CookieMonster.encode/2` instead.
+  """
 
   alias CookieMonster.Cookie
   alias CookieMonster.CookieDateTime
 
   @type return_t :: {:ok, String.t()} | {:error, :invalid_cookie}
 
-  @doc """
-  Encodes a %CookieMonster.Cookie{} struct / map into a string
-  """
+  @doc false
   @spec encode(Cookie.t() | map(), keyword()) :: return_t()
   def encode(cookie, opts \\ [])
 

@@ -1,5 +1,8 @@
 defmodule CookieMonster.Decoder do
-  @moduledoc false
+  @moduledoc """
+  Private module for decoding a cookie string. Please use
+  `CookieMonster.decode/1` instead.
+  """
 
   alias CookieMonster.Cookie
   alias CookieMonster.CookieDateTime
@@ -12,6 +15,7 @@ defmodule CookieMonster.Decoder do
 
   @type return_t :: ok_t() | err_t()
 
+  @doc false
   @spec decode(String.t()) :: return_t()
   def decode(str) do
     with {:ok, cookie_map} <- build_cookie(str),
