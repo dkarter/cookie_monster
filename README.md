@@ -1,6 +1,6 @@
 # CookieMonster
 
-![Build Status](https://github.com/dkarter/cookie_monster/actions/workflows/elixir.yml/badge.svg)
+![Build Status](https://github.com/dkarter/cookie_monster/actions/workflows/elixir.yml/badge.svg) [![Hex.pm](https://img.shields.io/hexpm/v/cookie_monster)](https://hex.pm/packages/cookie_monster)
 
 A simple HTTP Cookie encoder and decoder in pure Elixir with zero runtime dependencies![^1].
 
