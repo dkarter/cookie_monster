@@ -28,7 +28,7 @@ defmodule CookieMonster.MixProject do
       source_url: "https://github.com/dkarter/cookie_monster",
       docs: [
         main: "CookieMonster",
-        extras: ["README.md"]
+        extras: ["README.md", "CHANGELOG.md"]
       ],
 
       # Hex PM
