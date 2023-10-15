@@ -55,6 +55,6 @@ jobs:
       - name: Publish Hex Package
         if: ${{ steps.release.outputs.release_created }}
         run: |
-          mix hex.publish package --yes
+          mix hex.publish --yes
         env:
           HEX_API_KEY: '${{ secrets.HEX_API_KEY }}'
