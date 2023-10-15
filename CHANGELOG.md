@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/dkarter/cookie_monster/compare/v1.0.0...v1.1.0) (2023-10-15)
+
+
+### Features
+
+* add support for all valid expiration datetime formats ([#8](https://github.com/dkarter/cookie_monster/issues/8)) ([d0c17f7](https://github.com/dkarter/cookie_monster/commit/d0c17f7cbf6fd92caf234f9807be0e81dd39ee4a))
+
 ## 1.0.0 (2023-10-15)
 
 
