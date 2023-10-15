@@ -7,13 +7,13 @@ defmodule CookieMonster.Cookie do
   defstruct [:name, :value, :max_age, :path, :expires, :same_site, :domain, :secure, :http_only]
 
   @type t :: %__MODULE__{
-          name: String.t(),
-          value: String.t(),
-          expires: DateTime.t(),
-          max_age: 1..9,
-          same_site: :strict | :lax | :none,
-          domain: String.t(),
-          path: String.t(),
+          name: binary(),
+          value: binary(),
+          expires: DateTime.t() | nil,
+          max_age: integer() | nil,
+          same_site: :strict | :lax | :none | nil,
+          domain: binary() | nil,
+          path: binary() | nil,
           secure: boolean(),
           http_only: boolean()
         }
