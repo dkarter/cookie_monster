@@ -10,8 +10,25 @@ defmodule CookieMonster.CookieDateTimeTest do
   end
 
   describe "parse/1" do
-    test "parses datetime in cookie format into Elixir DateTime" do
-      assert CookieDateTime.parse("Wed, 21 Oct 2015 07:28:59 GMT") == ~U[2015-10-21 07:28:59Z]
+    test "parses datetime in cookie RFC 1123 format" do
+      input = "Sun, 06 Nov 1994 08:49:37 GMT"
+      expected = ~U[1994-11-06 08:49:37Z]
+
+      assert {:ok, expected} == CookieDateTime.parse(input)
+    end
+
+    test "parses datetime in cookie RFC 850 format" do
+      input = "Sunday, 06-Nov-23 08:49:37 GMT"
+      expected = ~U[2023-11-06 08:49:37Z]
+
+      assert {:ok, expected} == CookieDateTime.parse(input)
+    end
+
+    test "parses datetime in cookie asctime format" do
+      input = "Sun Nov  6 08:49:37 1994"
+      expected = ~U[1994-11-06 08:49:37Z]
+
+      assert {:ok, expected} == CookieDateTime.parse(input)
     end
   end
 end
