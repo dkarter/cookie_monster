@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.5](https://github.com/dkarter/cookie_monster/compare/v1.1.4...v1.1.5) (2023-10-19)
+
+
+### Bug Fixes
+
+* accept short weekday format for weekday names ([#16](https://github.com/dkarter/cookie_monster/issues/16)) ([fd83cc1](https://github.com/dkarter/cookie_monster/commit/fd83cc1b0a9b371d8beb47af54ba72996e4d35f7))
+
 ## [1.1.4](https://github.com/dkarter/cookie_monster/compare/v1.1.3...v1.1.4) (2023-10-15)
 
 
