@@ -24,6 +24,13 @@ defmodule CookieMonster.CookieDateTimeTest do
       assert {:ok, expected} == CookieDateTime.parse(input)
     end
 
+    test "parses datetime in cookie RFC 850 format with short week day" do
+      input = "Fri, 20-Oct-23 07:22:39 GMT"
+      expected = ~U[2023-10-20 07:22:39Z]
+
+      assert {:ok, expected} == CookieDateTime.parse(input)
+    end
+
     test "parses datetime in cookie asctime format" do
       input = "Sun Nov  6 08:49:37 1994"
       expected = ~U[1994-11-06 08:49:37Z]

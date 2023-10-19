@@ -39,12 +39,13 @@ defmodule CookieMonster.CookieDateTime.Parser.RFC850 do
   # rfc850-date  = weekday "," SP date2 SP time SP "GMT"
   # weekday      = "Monday" | "Tuesday" | "Wednesday" |
   #                "Thursday" | "Friday" | "Saturday" |
-  #                "Sunday"
+  #                "Sunday" | "Mon" | "Tue" | "Wed" |
+  #                "Thu" | "Fri" | "Sat" | "Sun"
   # date2        = 2DIGIT "-" month "-" 2DIGIT
   #                ; day-month-year (e.g., 02-Jun-82)
   # time         = 2DIGIT ":" 2DIGIT ":" 2DIGIT
   #                ; 00:00:00 - 23:59:59
-  @regex ~r/\w{6,9}, (?<day>\d{2})-(?<month>\w{3})-(?<year>\d{2}) (?<hour>\d{2}):(?<minute>\d{2}):(?<second>\d{2}) GMT/
+  @regex ~r/\w{3,9}, (?<day>\d{2})-(?<month>\w{3})-(?<year>\d{2}) (?<hour>\d{2}):(?<minute>\d{2}):(?<second>\d{2}) GMT/
 
   @impl Parser
   def parse(str) do
