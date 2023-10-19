@@ -13,6 +13,13 @@ defmodule CookieMonster.CookieDateTime.Parser.RFC850Test do
       assert expected == RFC850.parse(input)
     end
 
+    test "parses dates with year from 32 and short weekday" do
+      input = "Sun, 06-Nov-32 08:49:37 GMT"
+      expected = ~U[2032-11-06 08:49:37Z]
+
+      assert expected == RFC850.parse(input)
+    end
+
     test "parses dates with year from 94 and receives a warning log" do
       input = "Sunday, 06-Nov-94 08:49:37 GMT"
       expected = ~U[1994-11-06 08:49:37Z]
