@@ -51,6 +51,7 @@ defmodule CookieMonster.Decoder do
     directives
     |> Enum.map(&normalize_directive/1)
     |> Enum.map(&directive_to_kv_pair/1)
+    |> Enum.reject(&is_nil/1)
     |> Enum.into(%{})
   end
 
@@ -64,6 +65,7 @@ defmodule CookieMonster.Decoder do
   defp directive_to_kv_pair({"secure", true}), do: {:secure, true}
   defp directive_to_kv_pair({"httponly", true}), do: {:http_only, true}
   defp directive_to_kv_pair({"samesite", value}), do: {:same_site, value}
+  defp directive_to_kv_pair(_unsupported_directive), do: nil
 
   defp parse_cookie_values(map) do
     with {:ok, same_site} <- parse_same_site(map[:same_site]),
