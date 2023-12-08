@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.6](https://github.com/dkarter/cookie_monster/compare/v1.1.5...v1.1.6) (2023-12-08)
+
+
+### Bug Fixes
+
+* decode header with unsupported directive ([#18](https://github.com/dkarter/cookie_monster/issues/18)) ([332720f](https://github.com/dkarter/cookie_monster/commit/332720f261aa554fe30ddf380071231c74ef9149))
+
 ## [1.1.5](https://github.com/dkarter/cookie_monster/compare/v1.1.4...v1.1.5) (2023-10-19)
 
 
