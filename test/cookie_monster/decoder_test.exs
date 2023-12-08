@@ -81,6 +81,24 @@ defmodule CookieMonster.DecoderTest do
              }
     end
 
+    test "decodes cookie with invalid/unsupported params" do
+      cookie =
+        "secret=VGhhbmsgeW91IGZvciByZWFkaW5nIG15IGNvZGUhIHdhbm5hIGNoYXQ%2FIG1lQGRvcmlhbmthcnRlci5jb20gPGo%3D; Version=1; Unsupported=Value; SameSite=Strict; expires=Tue, 15 Jun 2021 05:32:54 GMT; path=/; secure"
+
+      assert {:ok, cookie} = Decoder.decode(cookie)
+
+      assert cookie == %Cookie{
+               value:
+                 "VGhhbmsgeW91IGZvciByZWFkaW5nIG15IGNvZGUhIHdhbm5hIGNoYXQ%2FIG1lQGRvcmlhbmthcnRlci5jb20gPGo%3D",
+               expires: ~U[2021-06-15 05:32:54Z],
+               path: "/",
+               http_only: nil,
+               name: "secret",
+               secure: true,
+               same_site: :strict
+             }
+    end
+
     test "returns an error if invalid cookie was provided" do
       assert {:error, :invalid_cookie} = Decoder.decode("")
       assert {:error, :invalid_cookie} = Decoder.decode("xyz")
